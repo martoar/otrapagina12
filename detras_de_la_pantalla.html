@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detrás de la Pantalla | Cine y Dirección Audiovisual</title>
+
+    <style>
+        /* ===== ESTILOS GENERALES ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0d0d0f;
+            color: #f4f1ea;
+            line-height: 1.6;
+        }
+
+        /* ===== ENCABEZADO ===== */
+        header {
+            min-height: 470px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.65), rgba(13, 13, 15, 0.95)),
+                url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=85")
+                center/cover no-repeat;
+            border-bottom: 2px solid #d6a84f;
+        }
+
+        .etiqueta {
+            color: #d6a84f;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        header h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(45px, 8vw, 82px);
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            max-width: 720px;
+            font-size: 19px;
+            color: #dedbd3;
+        }
+
+        /* ===== CONTENEDOR PRINCIPAL ===== */
+        .contenedor {
+            width: min(1100px, 92%);
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 65px 0;
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .titulo-seccion h2 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+
+        .linea {
+            width: 65px;
+            height: 3px;
+            background: #d6a84f;
+            margin: 0 auto;
+        }
+
+        /* ===== DESCRIPCIÓN ===== */
+        .intro {
+            text-align: center;
+            max-width: 850px;
+            margin: auto;
+            font-size: 18px;
+            color: #d8d5ce;
+        }
+
+        /* ===== TARJETAS ===== */
+        .tarjetas {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        article {
+            background: #17171a;
+            border: 1px solid #29292d;
+            border-radius: 12px;
+            padding: 0 0 28px;
+            overflow: hidden;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        article img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            margin-bottom: 22px;
+        }
+
+        article .contenido-articulo {
+            padding: 0 28px;
+        }
+
+        article:hover {
+            transform: translateY(-6px);
+            border-color: #d6a84f;
+        }
+
+        article .numero {
+            color: #d6a84f;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        article h3 {
+            margin: 10px 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 23px;
+        }
+
+        article p {
+            color: #c5c3bd;
+        }
+
+        /* ===== LISTA ===== */
+        .temas-box {
+            background: #17171a;
+            border-left: 4px solid #d6a84f;
+            padding: 30px 35px;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .temas-box ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px 35px;
+        }
+
+        .temas-box li::before {
+            content: "▸";
+            color: #d6a84f;
+            margin-right: 10px;
+        }
+
+        /* ===== ASIDE ===== */
+        aside {
+            margin: 20px 0 60px;
+            padding: 30px;
+            background: #211d16;
+            border: 1px solid #5c4928;
+            border-radius: 12px;
+        }
+
+        aside h2 {
+            font-family: Georgia, "Times New Roman", serif;
+            margin-bottom: 10px;
+            color: #e4bc67;
+        }
+
+        aside p {
+            color: #d7d0c3;
+        }
+
+        /* ===== SECCIÓN AUTOR ===== */
+        .autor {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            align-items: center;
+            background: #151518;
+            border-radius: 15px;
+            padding: 35px;
+        }
+
+        .autor img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #d6a84f;
+        }
+
+        .autor h2 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .autor p {
+            color: #c9c6bf;
+            margin-bottom: 8px;
+        }
+
+        .dato {
+            color: #e1bb68;
+            font-weight: bold;
+        }
+
+        /* ===== PIE DE PÁGINA ===== */
+        footer {
+            background: #070708;
+            border-top: 1px solid #29292d;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer h2 {
+            font-family: Georgia, "Times New Roman", serif;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #aaa7a0;
+            margin: 4px;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #706e69;
+        }
+
+        /* ===== ADAPTACIÓN A CELULARES ===== */
+        @media (max-width: 800px) {
+            .tarjetas {
+                grid-template-columns: 1fr;
+            }
+
+            .temas-box ul {
+                grid-template-columns: 1fr;
+            }
+
+            .autor {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .autor img {
+                max-width: 350px;
+                margin: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO PRINCIPAL -->
+    <header>
+        <div class="etiqueta">Cine • Arte • Narrativa</div>
+        <h1>Detrás de la Pantalla</h1>
+        <p>
+            Un espacio para descubrir el cine y conocer el proceso creativo
+            que convierte una idea en una historia audiovisual.
+        </p>
+    </header>
+
+    <main class="contenedor">
+
+        <!-- DESCRIPCIÓN DEL SITIO -->
+        <section>
+            <div class="titulo-seccion">
+                <h2>¿De qué trata este sitio?</h2>
+                <div class="linea"></div>
+            </div>
+
+            <p class="intro">
+                Este sitio web está dedicado al cine y a la dirección audiovisual.
+                Aquí se puede conocer cómo se construye una producción cinematográfica,
+                desde la creación de una idea y el desarrollo de una historia hasta
+                la grabación, la dirección de los actores y la edición final.
+                El cine no solo consiste en contar historias, también utiliza imágenes,
+                sonidos, luces y emociones para transmitir diferentes mensajes.
+            </p>
+        </section>
+
+        <!-- SUBTEMAS -->
+        <section>
+            <div class="titulo-seccion">
+                <h2>Temas del sitio</h2>
+                <div class="linea"></div>
+            </div>
+
+            <div class="tarjetas">
+                <article>
+                    <img
+                        src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=900&q=85"
+                        alt="Guion y escritura para una producción cinematográfica"
+                    >
+                    <div class="contenido-articulo">
+                        <span class="numero">01 — HISTORIA</span>
+                        <h3>Guion y narrativa</h3>
+                        <p>
+                            El punto de partida de una producción. Aquí se desarrolla
+                            la historia, los personajes, los conflictos y los diálogos.
+                        </p>
+                    </div>
+                </article>
+
+                <article>
+                    <img
+                        src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=85"
+                        alt="Cámara utilizada en una producción cinematográfica"
+                    >
+                    <div class="contenido-articulo">
+                        <span class="numero">02 — VISIÓN</span>
+                        <h3>Dirección audiovisual</h3>
+                        <p>
+                            El director coordina la visión artística de la producción
+                            y decide cómo se contará visualmente la historia.
+                        </p>
+                    </div>
+                </article>
+
+                <article>
+                    <img
+                        src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=85"
+                        alt="Cámara cinematográfica y fotografía audiovisual"
+                    >
+                    <div class="contenido-articulo">
+                        <span class="numero">03 — IMAGEN</span>
+                        <h3>Fotografía cinematográfica</h3>
+                        <p>
+                            El uso de planos, iluminación, colores y composición ayuda
+                            a crear la atmósfera y las emociones de cada escena.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- IMAGEN ILUSTRATIVA -->
+        <section>
+            <div class="titulo-seccion">
+                <h2>El lenguaje del cine</h2>
+                <div class="linea"></div>
+            </div>
+
+            <img
+                src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1600&q=85"
+                alt="Sala de cine con pantalla y butacas"
+                style="width:100%; height:300px; object-fit:cover; border-radius:15px; border:1px solid #29292d;"
+            >
+        </section>
+
+        <!-- LISTA -->
+        <section>
+            <div class="titulo-seccion">
+                <h2>Lo que podemos encontrar</h2>
+                <div class="linea"></div>
+            </div>
+
+            <div class="temas-box">
+                <ul>
+                    <li>Géneros cinematográficos</li>
+                    <li>Planos y movimientos de cámara</li>
+                    <li>Guion cinematográfico</li>
+                    <li>Dirección de actores</li>
+                    <li>Iluminación y color</li>
+                    <li>Sonido en el cine</li>
+                    <li>Edición y montaje</li>
+                    <li>Proceso de producción</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- INFORMACIÓN COMPLEMENTARIA -->
+        <aside>
+            <h2>Una mirada detrás de la cámara</h2>
+            <p>
+                Una película es el resultado del trabajo de muchas personas.
+                La dirección audiovisual conecta diferentes áreas como el guion,
+                la fotografía, el sonido, la actuación, el diseño y la edición
+                para construir una experiencia completa para el espectador.
+            </p>
+        </aside>
+
+        <!-- INFORMACIÓN DE LA AUTORA -->
+        <section>
+            <div class="titulo-seccion">
+                <h2>Sobre la autora</h2>
+                <div class="linea"></div>
+            </div>
+
+            <div class="autor">
+                <img
+                    src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=700&q=85"
+                    alt="Cámara cinematográfica representando la dirección audiovisual"
+                >
+
+                <div>
+                    <h2>Stefanny Gaviria Lozada</h2>
+                    <p>
+                        Este sitio fue creado como un proyecto escolar sobre el cine
+                        y la dirección audiovisual.
+                    </p>
+                    <p><span class="dato">Institución:</span> Skolmi</p>
+                    <p><span class="dato">Interés:</span> Cine y dirección audiovisual</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- INFORMACIÓN PERSONAL AL PIE DE PÁGINA -->
+    <footer>
+        <h2>Contacto</h2>
+        <p><strong>Nombre:</strong> Stefanny Gaviria Lozada</p>
+        <p><strong>Teléfono:</strong> 3044559267</p>
+        <p><strong>Correo:</strong> stefannygaviria2209@gmail.com</p>
+        <p><strong>Institución:</strong> Skolmi</p>
+
+        <p class="copyright">
+            © 2026 — Detrás de la Pantalla | Proyecto escolar de HTML y CSS
+        </p>
+    </footer>
+
+</body>
+</html>
